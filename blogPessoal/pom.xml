@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.4.RELEASE</version>
+		<version>2.3.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>dados2</artifactId>
+	<groupId>org.generation</groupId>
+	<artifactId>blogPessoal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dados2</name>
+	<name>blogPessoal</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -64,7 +64,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
-
 </project>
