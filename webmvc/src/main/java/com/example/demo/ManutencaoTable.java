@@ -18,7 +18,7 @@ public class ManutencaoTable {
 	
 	//Atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto Increment
 	private Long Id;
 	@Column
 	@NotNull
@@ -28,9 +28,18 @@ public class ManutencaoTable {
 	private Date data;
 	@Column
 	private boolean pago;
+	@Column
+	private String categoria;
 	
 	
 	//GETTERS E SETTERS
+	
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 	public Long getId() {
 		return Id;
 	}
