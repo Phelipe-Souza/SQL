@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @RestController
+@RequestMapping("/teste")
 public class Controller implements WebMvcConfigurer {
-	
+
 	public void addViewControllers(ViewControllerRegistry index) {
 		index.addViewController("/").setViewName("forward:/index.html");
 	}
+
 	
 	// Injetar o Repository
 	@Autowired   
