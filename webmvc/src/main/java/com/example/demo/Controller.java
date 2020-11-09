@@ -1,20 +1,20 @@
 package com.example.demo;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
@@ -40,13 +40,25 @@ public class Controller implements WebMvcConfigurer {
 		return repository.findAll();
 	} 
 	  
-	//localhost:8080/manutencoes/id
-	@GetMapping ("/manutencoes/{id}")
-	public Optional<ManutencaoTable> buscaUm(@PathVariable long id){
-		return repository.findById(id);
-		//@PathVariable serve para pegar o parametro que estiver entre {}
-		
+//	//localhost:8080/manutencoes/id
+//	@GetMapping ("/manutencoes/{id}")
+//	public Optional<ManutencaoTable> buscaUm(@PathVariable long id){
+//		return repository.findById(id);
+//		//@PathVariable serve para pegar o parametro que estiver entre {}
+//		
+//	}
+//	//deste jeito nao retornar erro
+//      @GetMapping("/manutencoes/id/{id}")
+//      public Optional<ManutencaoTable> buscarUm(@PathVariable Long id) {
+//	  return repository.findById(id);
+//}
+	
+	@GetMapping("/manutencoes/id/{id}")
+	public ResponseEntity<ManutencaoTable> getById(@PathVariable long id){
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
+
 
 	
 	//post é inserir, neste caso na mesma URL (localhost:8080/manutencoes)
