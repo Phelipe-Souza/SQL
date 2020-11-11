@@ -1,15 +1,12 @@
 package com.example.demo;
 
-import java.util.Date;
-import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table (name="tb_manutencao_crud")
@@ -22,9 +19,9 @@ public class ManutencaoTable {
 	@Column
 	@NotNull
 	private String nome;
-	@Column
-	@JsonFormat(pattern="yyyy-mm-dd")
-	private Date data;
+//	@Column
+//	@JsonFormat(pattern="yyyy-mm-dd")
+//	private Date data;
 	@Column
 	private boolean pago;
 	@Column
@@ -51,12 +48,12 @@ public class ManutencaoTable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
+//	public Date getData() {
+//		return data;
+//	}
+//	public void setData(Date data) {
+//		this.data = data;
+//	}
 	public boolean isPago() {
 		return pago;
 	}

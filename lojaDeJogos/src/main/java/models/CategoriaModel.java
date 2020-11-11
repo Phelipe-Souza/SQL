@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="tb_categoria")
+@Table(name = "tb_categorias")
 public class CategoriaModel {
 	
 	@Id
@@ -25,14 +25,11 @@ public class CategoriaModel {
 	@Column
 	@NotNull
 	private String descricao;
-	
+
 	@OneToMany(mappedBy="categoria", cascade=CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
 	private List<JogoModel> jogos;
 	
-	
-//    Getters e Setters
-
 	public long getId() {
 		return id;
 	}
@@ -56,7 +53,4 @@ public class CategoriaModel {
 	public void setJogos(List<JogoModel> jogos) {
 		this.jogos = jogos;
 	}
-	
-	
-
 }

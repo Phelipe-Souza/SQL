@@ -5,15 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
-@Table(name = "tb_jogos")
-public class JogoModel {
+@Table(name = "tb_usuarios")
+public class UsuarioModel {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,12 +22,12 @@ public class JogoModel {
 	
 	@Column
 	@NotNull
-	private int classificacao;
-
-	@ManyToOne
-	@JsonIgnoreProperties("jogos")
-	private CategoriaModel categoria;
+	private String email;
 	
+	@Column
+	@NotNull
+	private String senha;
+
 	public long getId() {
 		return id;
 	}
@@ -47,21 +44,20 @@ public class JogoModel {
 		this.nome = nome;
 	}
 
-	public int getClassificacao() {
-		return classificacao;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setClassificacao(int classificacao) {
-		this.classificacao = classificacao;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public CategoriaModel getCategoria() {
-		return categoria;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setCategoria(CategoriaModel categoria) {
-		this.categoria = categoria;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
-	
 
 }

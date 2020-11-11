@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,8 +73,8 @@ public class Controller implements WebMvcConfigurer {
 	
 	//Put significa atualizar, primeiro pega com a @PathVariable e depois insere com @RequestBody
 	//setId vai forçar a alteração do body, setar = mudar
-	@PutMapping("/manutencao/{id}")
-	public ManutencaoTable atualizar (@PathVariable Long id, @RequestBody ManutencaoTable objetinho) {
+	@PutMapping("/manutencoes/{id}")
+	public ManutencaoTable atualizar (@PathVariable Long id,@RequestBody ManutencaoTable objetinho) {
 	objetinho.setId(id);
 	repository.save(objetinho);
 	return objetinho;
@@ -94,5 +95,18 @@ public class Controller implements WebMvcConfigurer {
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+	
+	@Autowired
+	private Services service;
+	
+	@GetMapping("/testes")
+    public ResponseEntity<List<ManutencaoTable>> listAllItens() {
+        List<ManutencaoTable> itens= service.findAllItens();
+        if(itens.isEmpty()){
+            return new ResponseEntity<List<ManutencaoTable>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<ManutencaoTable>>(itens, HttpStatus.ACCEPTED);
+    }
+
 
 }
